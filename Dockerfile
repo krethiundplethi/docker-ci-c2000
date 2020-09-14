@@ -4,12 +4,15 @@ USER root
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get -y update && \
+RUN apt update && \
+    apt-get -y update && \
     apt-get -y install vim curl && \
     apt-get -y install git && \
     apt-get -y install unzip tar python2.7 binutils 
 
-RUN apt-get -y install libusb-0.1-4 libgconf-2-4 build-essential libpython2.7 cmake
+RUN apt-get -y install libusb-0.1-4 libgconf-2-4 build-essential libpython2.7 cmake libtomcrypt-dev
+
+RUN apt-get -y install doxygen graphviz texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 
 RUN apt-get clean && rm -rf /tmp/*
 
